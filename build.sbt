@@ -1,5 +1,5 @@
 
-val versionString = "0.1.0"
+val versionString = "0.2.0-SNAPSHOT"
 
 lazy val root = (project in file("."))
   .settings(
@@ -8,6 +8,9 @@ lazy val root = (project in file("."))
     version := versionString,
     scalaVersion := "2.12.8",
     scalacOptions in ThisBuild ++= Seq("-feature", "-deprecation"),
+    crossPaths := false, // disable using the Scala version in output paths and artifacts
+    publishArtifact in (Compile, packageDoc) := false,
+    publishArtifact in (Compile, packageSrc) := false,
   ).settings(
   // Publishing
     publishTo := {
